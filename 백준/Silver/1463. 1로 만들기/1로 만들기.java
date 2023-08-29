@@ -1,34 +1,28 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
-
-	static int dp(int v) {
-		Queue<int[]> q = new ArrayDeque<>();
-		q.offer(new int[] { v, 0 });
-		int size = q.size();
-		while (!q.isEmpty()) {
-			for (int i = 0; i < q.size(); i++) {
-				int[] tmp = q.poll();
-				v = tmp[0];
-				if (v == 1) {
-					return tmp[1];
-				}
-				if (v % 3 == 0)
-					q.offer(new int[] { v/3, tmp[1] + 1 });
-				if (v % 2 == 0)
-					q.offer(new int[] { v/2, tmp[1] + 1 });
-				q.offer(new int[] { v-1, tmp[1] + 1 });
-			}
-		}
-		return 0;
-	}
-
-	public static void main(String[] args) {
+public class Main  {
+	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int cnt = dp(N);
-		System.out.println(cnt);
+		int n = sc.nextInt();
+
+		int[] arr = new int[n+2];
+		
+		arr[1] = 0;
+		arr[2] = 1;
+		for (int i = 3; i <= n; i++) {
+			int a = Integer.MAX_VALUE;
+			int b = Integer.MAX_VALUE;
+			if(i%2==0) a=arr[i/2];
+			if(i%3==0) b=arr[i/3];
+			arr[i] = Math.min(a, arr[i-1]);
+			arr[i] = Math.min(arr[i],  b);
+			arr[i] += 1;
+		}
+		
+		System.out.println(arr[n]);
+
 	}
 }
