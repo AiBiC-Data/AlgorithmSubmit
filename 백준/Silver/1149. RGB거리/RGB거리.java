@@ -30,3 +30,5 @@ public class Main {
 		System.out.println(ans);
 	}
 }
+# DP문제
+# 이전 값을 신경써서 3가지 경우를 모두 나누고 2차원 배열을 통해 최소값을 구해주면 됨
