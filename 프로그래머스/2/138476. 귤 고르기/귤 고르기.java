@@ -6,12 +6,12 @@ class Solution {
         int cnt = 1;
         
         HashMap<Integer, Integer> hmap = new HashMap();
-        for(int i=0; i<tangerine.length; i++){
-            hmap.put(tangerine[i], hmap.getOrDefault(tangerine[i], 0)+1);
+        for(int t: tangerine){
+            hmap.put(t, hmap.getOrDefault(t, 0)+1);
         }
         
         ArrayList<Integer> aList = new ArrayList<>(hmap.values());
-        Collections.sort(aList, Collections.reverseOrder());
+        aList.sort((o1,o2)->o2-o1);
         
         for (int a : aList) {
             if (sum + a >= k) {
