@@ -6,6 +6,7 @@ class Solution{
 
         return answer;
     }
+    
     public int find(int n, int a, int b, int c){
         if((a+1)/2==(b+1)/2){
             answer=c;
